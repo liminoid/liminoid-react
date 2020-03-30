@@ -1,1 +1,1 @@
-export { default as Liminoid } from './Liminoid.js';
+export { default } from './Liminoid';

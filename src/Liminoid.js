@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Editor from 'react-simple-code-editor';
+import Editor from 'react-simple-code-editor'; // eslint-disable-line no-unused-vars
 
 import { faPlay } from '@fortawesome/free-solid-svg-icons/faPlay';
 import { faCopy } from '@fortawesome/free-solid-svg-icons/faCopy';
@@ -16,8 +16,8 @@ import 'tippy.js/themes/translucent.css';
 
 import { Repl } from 'liminoid-js';
 
-import Button from './Button';
-import Console from './Console';
+import Button from './Button'; // eslint-disable-line no-unused-vars
+import Console from './Console'; // eslint-disable-line no-unused-vars
 
 export default class Liminoid extends React.Component {
   static #SCOPE;
@@ -41,6 +41,7 @@ export default class Liminoid extends React.Component {
     showConsole: false,
     running: false
   };
+
   padding = 10;
   packages;
   console;
@@ -114,6 +115,7 @@ export default class Liminoid extends React.Component {
       });
   }
 
+  // eslint-disable-next-line no-unused-vars
   #run = e => {
     let stdout;
     if (this.console && window) {
@@ -125,7 +127,7 @@ export default class Liminoid extends React.Component {
     this.#repl
       .run(this.state.code)
       .then(res => {
-        const value = res.value;
+        const { value } = res;
 
         if (this.callback) {
           this.callback(value);
@@ -146,6 +148,7 @@ export default class Liminoid extends React.Component {
       });
   };
 
+  // eslint-disable-next-line no-unused-vars
   #copy = e => {
     // copy editor contents to clipboard
     if (!navigator.clipboard) {
@@ -155,7 +158,7 @@ export default class Liminoid extends React.Component {
     navigator.clipboard
       .writeText(this.state.code)
       .then(() => {
-        //show copy tooltip
+        // show copy tooltip
         this.#tippy.show();
         setTimeout(() => {
           this.#tippy.hide();
@@ -166,6 +169,7 @@ export default class Liminoid extends React.Component {
       });
   };
 
+  // eslint-disable-next-line no-unused-vars, consistent-return
   #restart = e => {
     if (
       window &&
@@ -209,6 +213,7 @@ export default class Liminoid extends React.Component {
       .catch(err => err);
   };
 
+  // eslint-disable-next-line no-undef
   #broadcast(msg) {
     Liminoid.#shared.forEach(function(id) {
       document.getElementById(`console-${id}`).innerText = msg;
