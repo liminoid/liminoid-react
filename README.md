@@ -1,6 +1,6 @@
 <div align="center">
 
-  <h1>🔵🔴 `<Liminoid />` 🔴🔵</h1>
+  <h1>🔵🔴 <Liminoid /\> 🔴🔵</h1>
 
 <strong>In-browser code editor component powered by `liminoid-js`</strong>
 
