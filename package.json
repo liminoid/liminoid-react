@@ -1,6 +1,6 @@
 {
   "name": "liminoid-react",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "In-browser code editor component powered by liminoid-js",
   "keywords": [
     "javascript",
