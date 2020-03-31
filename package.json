@@ -18,7 +18,7 @@
   "license": "MIT",
   "homepage": "https://github.com/liminoid/liminoid-react",
   "bugs": "https://github.com/liminoid/liminoid-react/issues",
-  "main": "dist/liminoid-react.umd.js",
+  "main": "dist/liminoid-react.umd.min.js",
   "module": "src/index.js",
   "unpkg": "dist/liminoid-react.esm.min.js",
   "jsdelivr": "dist/liminoid-react.umd.min.js",
