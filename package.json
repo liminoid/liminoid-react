@@ -9,7 +9,8 @@
     "pyodide",
     "repl",
     "react",
-    "liminoid"
+    "liminoid",
+    "component"
   ],
   "author": {
     "name": "Jonathan Dinu",

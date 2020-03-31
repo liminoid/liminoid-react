@@ -2,7 +2,7 @@
 
   <h1>🔵🔴 <code>&lt;Liminoid /></code> 🔴🔵</h1>
 
-<strong>In-browser code editor component powered by `liminoid-js`</strong>
+<strong>Like [`react-live`](https://github.com/FormidableLabs/react-live) that can run the scientific Python stack... powered by [liminoid-js](https://github.com/liminoid/liminoid-js)</strong>
 
 </div>
 
