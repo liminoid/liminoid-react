@@ -7,7 +7,6 @@ export default class Button extends React.Component {
   icon;
   style = {
     fontFamily: 'inherit',
-    fontSize: '75%',
     margin: '0.5em',
     overflow: 'visible',
     textTransform: 'none',
@@ -31,6 +30,7 @@ export default class Button extends React.Component {
       <button
         onClick={this.action}
         id={this.id}
+        className="liminoid"
         disabled={this.props.disabled}
         style={{
           ...this.style,

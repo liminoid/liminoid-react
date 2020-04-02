@@ -248,30 +248,45 @@ export default class Liminoid extends React.Component {
           style={{
             background: '#2d2d2d',
             display: 'flex',
-            flexDirection: 'row-reverse'
+            flexDirection: 'row',
+            justifyContent: 'space-between'
           }}
         >
-          <Button
-            id={`stop-${this.#id}`}
-            icon={faTimes}
-            action={this.#restart}
-            disabled={!this.state.initialized}
-            title="Restart Python session"
-          />
-          <Button
-            id={`copy-${this.#id}`}
-            icon={faCopy}
-            action={this.#copy}
-            disabled={false}
-            title="Copy to clipboard"
-          />
-          <Button
-            id={`play-${this.#id}`}
-            icon={faPlay}
-            action={this.#run}
-            disabled={!this.state.initialized}
-            title="Run this code"
-          />
+          <span
+            style={{
+              color: '#fff',
+              backgroundColor: 'rgb(189, 147, 249)',
+              padding: '4px 2px 0px 2px',
+              marginLeft: '2em',
+              borderRadius: '0% 0% 20% 20%',
+              fontSize: '90%'
+            }}
+          >
+            Python
+          </span>
+          <div>
+            <Button
+              id={`play-${this.#id}`}
+              icon={faPlay}
+              action={this.#run}
+              disabled={!this.state.initialized}
+              title="Run this code"
+            />
+            <Button
+              id={`copy-${this.#id}`}
+              icon={faCopy}
+              action={this.#copy}
+              disabled={false}
+              title="Copy to clipboard"
+            />
+            <Button
+              id={`stop-${this.#id}`}
+              icon={faTimes}
+              action={this.#restart}
+              disabled={!this.state.initialized}
+              title="Restart Python session"
+            />
+          </div>
         </div>
 
         <Editor
