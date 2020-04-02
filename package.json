@@ -1,6 +1,6 @@
 {
   "name": "liminoid-react",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Like `react-live` that can run the scientific Python stack... powered by `liminoid-js`",
   "keywords": [
     "javascript",
@@ -19,10 +19,10 @@
   "license": "MIT",
   "homepage": "https://github.com/liminoid/liminoid-react",
   "bugs": "https://github.com/liminoid/liminoid-react/issues",
-  "main": "dist/liminoid-react.umd.min.js",
+  "main": "dist/cjs/index.js",
   "module": "src/index.js",
-  "unpkg": "dist/liminoid-react.esm.min.js",
-  "jsdelivr": "dist/liminoid-react.umd.min.js",
+  "unpkg": "dist/esm/index.js",
+  "jsdelivr": "dist/cjs/index.js",
   "repository": {
     "url": "https://github.com/liminoid/liminoid-react.git",
     "type": "git"
