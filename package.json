@@ -1,6 +1,6 @@
 {
   "name": "liminoid-react",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Like `react-live` that can run the scientific Python stack... powered by `liminoid-js`",
   "keywords": [
     "javascript",
@@ -29,7 +29,8 @@
   },
   "files": [
     "dist/**/*.js",
-    "src/**/*.js"
+    "src/**/*.js",
+    "src/prism.css"
   ],
   "scripts": {
     "build": "rollup -c",
