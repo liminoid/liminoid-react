@@ -9,6 +9,7 @@ export default class Button extends React.Component {
     fontFamily: 'inherit',
     margin: '0.5em',
     overflow: 'visible',
+    fontSize: '0.9em',
     textTransform: 'none',
     WebkitAppearance: 'button',
     outline: 'none',

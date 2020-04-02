@@ -256,10 +256,11 @@ export default class Liminoid extends React.Component {
             style={{
               color: '#fff',
               backgroundColor: 'rgb(189, 147, 249)',
-              padding: '4px 2px 0px 2px',
-              marginLeft: '2em',
+              padding: '6px 4px 0px 4px',
+              marginLeft: '3em',
+              marginBottom: '0.5em',
               borderRadius: '0% 0% 20% 20%',
-              fontSize: '90%'
+              fontSize: '80%'
             }}
           >
             Python

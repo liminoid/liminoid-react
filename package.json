@@ -1,6 +1,6 @@
 {
   "name": "liminoid-react",
-  "version": "0.0.7",
+  "version": "0.0.9",
   "description": "Like `react-live` that can run the scientific Python stack... powered by `liminoid-js`",
   "keywords": [
     "javascript",
@@ -20,7 +20,7 @@
   "homepage": "https://github.com/liminoid/liminoid-react",
   "bugs": "https://github.com/liminoid/liminoid-react/issues",
   "main": "dist/cjs/index.js",
-  "module": "src/index.js",
+  "module": "dist/esm/index.js",
   "unpkg": "dist/esm/index.js",
   "jsdelivr": "dist/cjs/index.js",
   "repository": {
