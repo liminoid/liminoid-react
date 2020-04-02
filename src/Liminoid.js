@@ -89,6 +89,7 @@ export default class Liminoid extends React.Component {
     }
   }
 
+  // eslint-disable-next-line no-undef
   #initRepl(Repl) {
     if (this.scope) {
       this.#repl = new Repl();
