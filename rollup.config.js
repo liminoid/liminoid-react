@@ -37,8 +37,9 @@ const umd = {
   output: [
     {
       ...outputCommon,
-      file: 'dist/liminoid-react.umd.min.js',
-      format: 'umd',
+      dir: 'dist/cjs',
+      chunkFileNames: '[name]-[hash].js',
+      format: 'cjs',
       plugins: [
         terser({
           output: {
@@ -56,12 +57,8 @@ const module = {
   output: [
     {
       ...outputCommon,
-      file: 'dist/liminoid-react.esm.dev.js',
-      format: 'esm'
-    },
-    {
-      ...outputCommon,
-      file: 'dist/liminoid-react.esm.min.js',
+      dir: 'dist/esm',
+      chunkFileNames: '[name]-[hash].js',
       format: 'esm',
       plugins: [
         terser({

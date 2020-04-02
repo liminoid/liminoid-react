@@ -14,8 +14,6 @@ import tippy from 'tippy.js';
 import 'tippy.js/dist/tippy.css';
 import 'tippy.js/themes/translucent.css';
 
-import { Repl } from 'liminoid-js';
-
 import Button from './Button'; // eslint-disable-line no-unused-vars
 import Console from './Console'; // eslint-disable-line no-unused-vars
 
@@ -89,7 +87,9 @@ export default class Liminoid extends React.Component {
     } else {
       this.scope = false;
     }
+  }
 
+  #initRepl(Repl) {
     if (this.scope) {
       this.#repl = new Repl();
     } else {
@@ -99,7 +99,7 @@ export default class Liminoid extends React.Component {
       Liminoid.#shared.add(this.#id);
     }
 
-    // async method, we don't want to block constructor
+    // async method, we don't want to block
     // or throw a breaking error so we update
     // component state when/if promise resolves...
     this.#repl
@@ -221,6 +221,11 @@ export default class Liminoid extends React.Component {
   }
 
   componentDidMount() {
+    // needs to be in browser to attach Repl
+    import('liminoid-js').then(({ Repl }) => {
+      this.#initRepl(Repl);
+    });
+
     // attach tooltip to copy  button
     this.#tippy = tippy(document.getElementById(`copy-${this.#id}`), {
       content: 'Copied to clipboard!',
