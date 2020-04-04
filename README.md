@@ -48,7 +48,7 @@ For a more comprehensive guide to using the package see the [documentation](http
 
 <!-- prettier-ignore -->
 ```jsx
-// easiest to use ES6 imports from UNPKG CDN
+// easiest to use ES6 imports from the UNPKG CDN
 import Liminoid from 'https://unpkg.com/liminoid-react';
 
 const placeholder = `
