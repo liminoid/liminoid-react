@@ -1,13 +1,13 @@
 <div align="center">
 
-  <h1>🔵🔴 <code>&lt;Liminoid /></code> 🔴🔵</h1>
+  <h1>🔵🔴 &lt;Liminoid /> 🔴🔵</h1>
 
 <strong>Like [`react-live`](https://github.com/FormidableLabs/react-live) that can run the scientific Python stack... powered by [liminoid-js](https://github.com/liminoid/liminoid-js)</strong>
 
 </div>
 
 <div align="center">
-  <h3>
+  <h4>
     <a href="https://liminoid.io/guides/react/">
       Documentation
     </a>
@@ -23,7 +23,11 @@
     <a href="https://stackoverflow.com/questions/tagged/liminoid">
       Stack Overflow
     </a>
-  </h3>
+    <span> | </span>
+    <a href="https://liminoid.io/contributing/">
+      Contributing
+    </a>
+  </h4>
 </div>
 
 ## Installation
@@ -76,14 +80,13 @@ clf.predict(X[0:1])
 |   `edit`   | `true`  |  `Boolean`: `true` or `false`   |  `false` disables the `textarea` input while still allowing the embedded code to be run. |
 |   `scope`   | `false`  |  `Boolean`: `true` or `false`   |  `false` creates a new `Repl()` for the component with its own Python context. `true` shares the `Repl()` context between editors globally, i.e. one editor can reference variables from another. |
 |   `onResult`   | `undefined`  |  `Function`: [function expression][f_exp] or reference  |  `false` disables the `textarea` input while still allowing the embedded code to be run. |
+|   `code`   | `undefined`  |  `String` or `template literal` | placeholder code that populates the editor component on initialization. |
 
 [f_exp]: https://developer.mozilla.org/en-US/docs/web/JavaScript/Reference/Operators/function
 
-See the [kitchen sink]() for a demo of the effects of different `prop` options and configuration.
-
 ## Contributing/Requests
 
-Open an [issue](https://github.com/liminoid/liminoid-react/issues) or post a message in the [chatroom](https://discord.gg/s6WQ9RS).
+Open an [issue](https://github.com/liminoid/liminoid-react/issues) or post a message in the [chatroom](https://discord.gg/s6WQ9RS). If you would like to contribute to the project (code, documentation, tutorials, etc.) see the [contributing guide](https://liminoid.io/contributing/) for how to get started 🙌
 
 ## Citing
 
@@ -92,7 +95,7 @@ While not required, when using (or extending) Liminoid for academic work, citati
 ```
 @software{liminoid,
   author = {Jonathan Dinu},
-  title = {Liminoid: Liminoid: Web assembly toolkit for building local-first analytics applications},
+  title = {Liminoid: Web assembly toolkit for building local-first analytics applications},
   url = {https://github.com/liminoid},
   version = {0.0.1},
   month = {March},
