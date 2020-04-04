@@ -76,7 +76,7 @@
   "dependencies": {
     "clipboard": "^2.0.5",
     "ionicons": "^5.0.0",
-    "liminoid-js": "^0.1.10",
+    "liminoid-js": "^0.1.12",
     "prismjs": "^1.19.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
