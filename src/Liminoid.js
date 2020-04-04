@@ -54,9 +54,9 @@ export default class Liminoid extends React.Component {
     Liminoid.#count += 1;
     this.#id = Liminoid.#count;
 
-    // set initial default code if component is empty
-    if (props.children && typeof props.children === 'string') {
-      this.state.code = props.children;
+    // set initial default code if component has no code
+    if (props.code && typeof props.code === 'string') {
+      this.state.code = props.code.trim();
     }
 
     // only set pacakges if passed prop is an Array

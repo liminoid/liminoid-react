@@ -36,9 +36,10 @@
               } else if (err) {
                 console.log(`an error was returned: ${err}`);
               }
-            }
+            },
+            code: 'name = "Jonathan"\nname'
           },
-          'name = "Jonathan"\nname'
+          null
         ),
         document.getElementById('root')
       );
@@ -49,7 +50,7 @@
       );
 
       ReactDOM.render(
-        React.createElement(Liminoid, {}, 'name'),
+        React.createElement(Liminoid, { code: 'name' }, null),
         document.getElementById('root3')
       );
     </script>

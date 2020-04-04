@@ -47,20 +47,23 @@ For a more comprehensive guide to using the package see the [documentation](http
 // easiest to use ES6 imports from UNPKG CDN
 import Liminoid from 'https://unpkg.com/liminoid-react';
 
-<Liminoid
-  packages={['scikit-learn']}
-  console={false}
-  edit={true}
-  scope={false}
-  onResult={res => console.log(res)}
->
+const placeholder = `
 from sklearn import svm
 from sklearn import datasets
 clf = svm.SVC()
 X, y = datasets.load_iris(return_X_y=True)
 clf.fit(X, y)
 clf.predict(X[0:1])
-</Liminoid>
+`;
+
+<Liminoid
+  packages={['scikit-learn']}
+  console={true}
+  edit={true}
+  scope={false}
+  onResult={res => console.log(res)}
+  code={placeholder}
+/>
 ```
 
 ## `props`

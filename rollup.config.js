@@ -67,6 +67,12 @@ const module = {
           }
         })
       ]
+    },
+    {
+      ...outputCommon,
+      dir: 'dist/debug',
+      chunkFileNames: '[name]-[hash].js',
+      format: 'esm'
     }
   ]
 };
