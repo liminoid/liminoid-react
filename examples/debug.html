@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Hello Liminoid</title>
+
+    <script
+      src="https://unpkg.com/react@16/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+  </head>
+  <body>
+    <div style="width: 960px; margin: 100px auto;">
+      <h1>Editor 1, Repl 1</h1>
+      <div id="root"></div>
+      <h1>Editor 2, Repl 2</h1>
+      <div id="root2"></div>
+      <h1>Editor 3, Repl 1 (shares runtime w/ first editor)</h1>
+      <div id="root3"></div>
+    </div>
+    <script type="module">
+      import Liminoid from '../dist/esm/index.js';
+
+      ReactDOM.render(
+        React.createElement(
+          Liminoid,
+          {
+            pacakges: 'numpy',
+            onResult: (res, err) => {
+              if (res) {
+                console.log(`the code returned ${res}`);
+              } else if (err) {
+                console.log(`an error was returned: ${err}`);
+              }
+            },
+            code: 'name = "Jonathan"\nname'
+          },
+          null
+        ),
+        document.getElementById('root')
+      );
+
+      ReactDOM.render(
+        React.createElement(Liminoid, { scope: true, packages: [] }, null),
+        document.getElementById('root2')
+      );
+
+      ReactDOM.render(
+        React.createElement(Liminoid, { code: 'name' }, null),
+        document.getElementById('root3')
+      );
+    </script>
+  </body>
+</html>
