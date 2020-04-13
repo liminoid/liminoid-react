@@ -8,9 +8,9 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes';
 
 import Prism from 'prismjs/components/prism-core';
 import 'prismjs/components/prism-python';
-import './prism.css';
-
 import tippy from 'tippy.js';
+import styles from './prism.css';
+
 import 'tippy.js/dist/tippy.css';
 import 'tippy.js/themes/translucent.css';
 
@@ -242,7 +242,7 @@ export default class Liminoid extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id={`liminoid-${this.#id}`}>
         <div
           className="editor-btns"
           style={{
@@ -298,6 +298,7 @@ export default class Liminoid extends React.Component {
           style={this.#style}
           tabSize={4}
           textareaId={`editor-${this.#id}`}
+          className={styles.liminoidCode}
         />
         {this.console && (
           <Console
