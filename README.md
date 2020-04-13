@@ -8,7 +8,7 @@
 
 <div align="center">
   <h4>
-    <a href="https://liminoid.io/guides/react/">
+    <a href="https://liminoid.io/reference/react/">
       Documentation
     </a>
     <span> | </span>
@@ -44,7 +44,7 @@ $ npm install --save liminoid-react
 
 ## Usage
 
-For a more comprehensive guide to using the package see the [documentation](https://liminoid.io/guides/react/) or browse the [examples](examples).
+For a more comprehensive guide to using the package see the [documentation](https://liminoid.io/reference/react/) or browse the [examples](examples).
 
 <!-- prettier-ignore -->
 ```jsx

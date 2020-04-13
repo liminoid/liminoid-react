@@ -19,6 +19,7 @@ module.exports = {
       'error',
       'always',
       { exceptAfterSingleLine: true }
-    ]
+    ],
+    'import/no-extraneous-dependencies': ['warn']
   }
 };
