@@ -9,7 +9,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes';
 import Prism from 'prismjs/components/prism-core';
 import 'prismjs/components/prism-python';
 import tippy from 'tippy.js';
-import styles from './prism.css';
+import './prism.css';
 
 import 'tippy.js/dist/tippy.css';
 import 'tippy.js/themes/translucent.css';
