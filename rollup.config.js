@@ -2,6 +2,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import babel from 'rollup-plugin-babel';
 import resolve from '@rollup/plugin-node-resolve';
 import postcss from 'rollup-plugin-postcss';
+import nested from 'postcss-nested';
 import replace from '@rollup/plugin-replace';
 import json from '@rollup/plugin-json';
 
@@ -21,7 +22,7 @@ const plugins = [
   babel(),
   json(),
   postcss({
-    plugins: []
+    plugins: [nested]
   }),
   replace({
     'process.env.NODE_ENV': JSON.stringify('production')

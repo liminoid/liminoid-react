@@ -52,6 +52,9 @@
     "@babel/preset-env": "^7.9.0",
     "@babel/preset-react": "^7.8.3",
     "@babel/register": "^7.8.6",
+    "@fortawesome/fontawesome-svg-core": "^1.2.27",
+    "@fortawesome/free-solid-svg-icons": "^5.12.1",
+    "@fortawesome/react-fontawesome": "^0.1.9",
     "@rollup/plugin-commonjs": "^11.0.2",
     "@rollup/plugin-json": "^4.0.2",
     "@rollup/plugin-node-resolve": "^7.1.1",
@@ -59,6 +62,7 @@
     "@rollup/plugin-sucrase": "^3.0.0",
     "babel-eslint": "^11.0.0",
     "babel-jest": "^25.2.4",
+    "clipboard": "^2.0.5",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-prettier": "^6.10.0",
@@ -66,24 +70,22 @@
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-prettier": "^3.1.2",
     "ignore-styles": "^5.0.1",
-    "jest": "^25.2.4",
-    "rollup-plugin-babel": "^4.3.3",
-    "rollup-plugin-postcss": "^2.1.1",
-    "rollup-plugin-terser": "^5.3.0",
-    "sinon": "^9.0.0",
-    "clipboard": "^2.0.5",
     "ionicons": "^5.0.0",
+    "jest": "^25.2.4",
     "liminoid-js": "^0.1.13",
     "prismjs": "^1.19.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
+    "react-simple-code-editor": "^0.11.0",
     "rollup": "^2.1.0",
-    "tippy.js": "^6.1.0",
-    "@fortawesome/fontawesome-svg-core": "^1.2.27",
-    "@fortawesome/free-solid-svg-icons": "^5.12.1",
-    "@fortawesome/react-fontawesome": "^0.1.9",
-    "react-simple-code-editor": "^0.11.0"
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-postcss": "^2.1.1",
+    "rollup-plugin-terser": "^5.3.0",
+    "sinon": "^9.0.0",
+    "tippy.js": "^6.1.0"
   },
   "peerDependencies": {},
-  "dependencies": {}
+  "dependencies": {
+    "postcss-nested": "^4.2.1"
+  }
 }

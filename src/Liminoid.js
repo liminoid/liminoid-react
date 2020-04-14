@@ -242,7 +242,7 @@ export default class Liminoid extends React.Component {
 
   render() {
     return (
-      <div id={`liminoid-${this.#id}`}>
+      <div id={`liminoid-${this.#id}`} className="liminoidCode">
         <div
           className="editor-btns"
           style={{
@@ -298,7 +298,6 @@ export default class Liminoid extends React.Component {
           style={this.#style}
           tabSize={4}
           textareaId={`editor-${this.#id}`}
-          className={styles.liminoidCode}
         />
         {this.console && (
           <Console
