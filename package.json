@@ -1,6 +1,6 @@
 {
   "name": "liminoid-react",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "Like `react-live` that can run the scientific Python stack... powered by `liminoid-js`",
   "keywords": [
     "javascript",
@@ -73,6 +73,7 @@
     "ionicons": "^5.0.0",
     "jest": "^25.2.4",
     "liminoid-js": "^0.1.13",
+    "prettier": "2.0.4",
     "prismjs": "^1.19.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",

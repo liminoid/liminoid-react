@@ -16,7 +16,7 @@ export default class Button extends React.Component {
     backgroundColor: 'Transparent',
     backgroundRepeat: 'no-repeat',
     border: 'none',
-    padding: 0
+    padding: 0,
   };
 
   constructor(props) {
@@ -35,7 +35,7 @@ export default class Button extends React.Component {
         disabled={this.props.disabled}
         style={{
           ...this.style,
-          ...{ cursor: this.props.disabled ? 'wait' : 'pointer' }
+          ...{ cursor: this.props.disabled ? 'wait' : 'pointer' },
         }}
         title={this.props.title}
       >

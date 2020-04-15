@@ -29,7 +29,7 @@ export default class Liminoid extends React.Component {
   #style = {
     fontFamily: 'Lucida Console, Courier, monospace',
     background: '#2d2d2d',
-    color: '#ccc'
+    color: '#ccc',
   };
 
   // public instance fields
@@ -37,7 +37,7 @@ export default class Liminoid extends React.Component {
     code: `'🐍 Edit and run me 🐍'`,
     initialized: false,
     showConsole: false,
-    running: false
+    running: false,
   };
 
   padding = 10;
@@ -105,20 +105,21 @@ export default class Liminoid extends React.Component {
     // component state when/if promise resolves...
     this.#repl
       .init()
-      .then(res => res.load(this.packages))
-      .then(res => {
+      .then((res) => res.load(this.packages))
+      .then((res) => {
         if (res === this.#repl) {
           this.setState({ initialized: true });
         }
       })
-      .catch(res => {
+      .catch((res) => {
         console.log(res);
       });
   }
 
   // eslint-disable-next-line no-unused-vars
-  #run = e => {
+  #run = (e) => {
     let stdout;
+    this.setState({ running: true });
     if (this.console && window) {
       this.setState({ showConsole: true });
       stdout = document.getElementById(`console-${this.#id}`);
@@ -127,7 +128,8 @@ export default class Liminoid extends React.Component {
 
     this.#repl
       .run(this.state.code)
-      .then(res => {
+      .then((res) => {
+        this.setState({ running: false });
         const { value } = res;
 
         if (this.callback) {
@@ -138,7 +140,7 @@ export default class Liminoid extends React.Component {
           stdout.innerText = value;
         }
       })
-      .catch(err => {
+      .catch((err) => {
         if (this.callback) {
           this.callback(null, err);
         }
@@ -150,7 +152,7 @@ export default class Liminoid extends React.Component {
   };
 
   // eslint-disable-next-line no-unused-vars
-  #copy = e => {
+  #copy = (e) => {
     // copy editor contents to clipboard
     if (!navigator.clipboard) {
       console.log('Clipboard copy not supported in this browser');
@@ -171,7 +173,7 @@ export default class Liminoid extends React.Component {
   };
 
   // eslint-disable-next-line no-unused-vars, consistent-return
-  #restart = e => {
+  #restart = (e) => {
     if (
       window &&
       !window.confirm(
@@ -197,8 +199,9 @@ export default class Liminoid extends React.Component {
 
     this.#repl
       .restart(this.packages)
-      .then(res => {
+      .then((res) => {
         if (res === this.#repl) {
+          this.setState({ running: false });
           this.setState({ initialized: true });
 
           if (this.console && window) {
@@ -211,12 +214,12 @@ export default class Liminoid extends React.Component {
           }
         }
       })
-      .catch(err => err);
+      .catch((err) => err);
   };
 
   // eslint-disable-next-line no-undef
   #broadcast(msg) {
-    Liminoid.#shared.forEach(function(id) {
+    Liminoid.#shared.forEach(function (id) {
       document.getElementById(`console-${id}`).innerText = msg;
     });
   }
@@ -231,7 +234,7 @@ export default class Liminoid extends React.Component {
     this.#tippy = tippy(document.getElementById(`copy-${this.#id}`), {
       content: 'Copied to clipboard!',
       trigger: 'manual',
-      theme: 'translucent'
+      theme: 'translucent',
     });
 
     if (!this.edit && window) {
@@ -249,7 +252,7 @@ export default class Liminoid extends React.Component {
             background: '#2d2d2d',
             display: 'flex',
             flexDirection: 'row',
-            justifyContent: 'space-between'
+            justifyContent: 'space-between',
           }}
         >
           <span
@@ -260,7 +263,7 @@ export default class Liminoid extends React.Component {
               marginLeft: '3em',
               marginBottom: '0.5em',
               borderRadius: '0% 0% 20% 20%',
-              fontSize: '80%'
+              fontSize: '80%',
             }}
           >
             Python
@@ -270,7 +273,7 @@ export default class Liminoid extends React.Component {
               id={`play-${this.#id}`}
               icon={faPlay}
               action={this.#run}
-              disabled={!this.state.initialized}
+              disabled={!this.state.initialized || this.state.running}
               title="Run this code"
             />
             <Button
@@ -292,8 +295,8 @@ export default class Liminoid extends React.Component {
 
         <Editor
           value={this.state.code}
-          onValueChange={code => this.setState({ code })}
-          highlight={code => Prism.highlight(code, Prism.languages.py)}
+          onValueChange={(code) => this.setState({ code })}
+          highlight={(code) => Prism.highlight(code, Prism.languages.py)}
           padding={this.padding}
           style={this.#style}
           tabSize={4}
@@ -307,8 +310,8 @@ export default class Liminoid extends React.Component {
               ...{
                 marginTop: '1em',
                 padding: `${this.padding}px`,
-                visibility: this.state.showConsole ? 'visible' : 'hidden'
-              }
+                visibility: this.state.showConsole ? 'visible' : 'hidden',
+              },
             }}
           />
         )}
