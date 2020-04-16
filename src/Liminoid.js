@@ -42,7 +42,7 @@ export default class Liminoid extends React.Component {
 
   padding = 10;
   packages;
-  console;
+  display;
   edit;
   callback;
   scope;
@@ -64,9 +64,9 @@ export default class Liminoid extends React.Component {
 
     // console defaults to true
     if (props.console === false) {
-      this.console = false;
+      this.display = false;
     } else {
-      this.console = true;
+      this.display = true;
     }
 
     // edit defaults to true
@@ -120,7 +120,7 @@ export default class Liminoid extends React.Component {
   #run = (e) => {
     let stdout;
     this.setState({ running: true });
-    if (this.console && window) {
+    if (this.display && window) {
       this.setState({ showConsole: true });
       stdout = document.getElementById(`console-${this.#id}`);
       stdout.innerText = 'Running...';
@@ -185,7 +185,7 @@ export default class Liminoid extends React.Component {
 
     this.setState({ initialized: false });
 
-    if (this.console && window) {
+    if (this.display && window) {
       this.setState({ showConsole: true });
 
       // restart all editors sharing the global Repl
@@ -203,7 +203,7 @@ export default class Liminoid extends React.Component {
         if (res === this.#repl) {
           this.setState({ initialized: true });
 
-          if (this.console && window) {
+          if (this.display && window) {
             if (!this.scope) {
               this.#broadcast('Session restarted!');
             } else {
@@ -302,7 +302,7 @@ export default class Liminoid extends React.Component {
           tabSize={4}
           textareaId={`editor-${this.#id}`}
         />
-        {this.console && (
+        {this.display && (
           <Console
             id={`console-${this.#id}`}
             style={{
