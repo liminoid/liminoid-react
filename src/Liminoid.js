@@ -129,7 +129,6 @@ export default class Liminoid extends React.Component {
     this.#repl
       .run(this.state.code)
       .then((res) => {
-        this.setState({ running: false });
         const { value } = res;
 
         if (this.callback) {
@@ -148,7 +147,8 @@ export default class Liminoid extends React.Component {
         if (stdout) {
           stdout.innerText = err;
         }
-      });
+      })
+      .finally(() => this.setState({ running: false }));
   };
 
   // eslint-disable-next-line no-unused-vars
@@ -201,7 +201,6 @@ export default class Liminoid extends React.Component {
       .restart(this.packages)
       .then((res) => {
         if (res === this.#repl) {
-          this.setState({ running: false });
           this.setState({ initialized: true });
 
           if (this.console && window) {
@@ -214,7 +213,8 @@ export default class Liminoid extends React.Component {
           }
         }
       })
-      .catch((err) => err);
+      .catch((err) => err)
+      .finally(() => this.setState({ running: false }));
   };
 
   // eslint-disable-next-line no-undef
