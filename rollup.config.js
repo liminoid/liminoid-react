@@ -14,7 +14,7 @@ const outputCommon = {
   name: 'liminoid-react',
   banner: `// ${meta.homepage} v${
     meta.version
-  } Copyright ${new Date().getFullYear()} ${meta.author.name}`
+  } Copyright ${new Date().getFullYear()} ${meta.author.name}`,
 };
 
 const plugins = [
@@ -22,11 +22,11 @@ const plugins = [
   babel(),
   json(),
   postcss({
-    plugins: [nested]
+    plugins: [nested],
   }),
   replace({
-    'process.env.NODE_ENV': JSON.stringify('production')
-  })
+    'process.env.NODE_ENV': JSON.stringify('production'),
+  }),
 ];
 
 ////////////////////
@@ -44,12 +44,12 @@ const umd = {
       plugins: [
         terser({
           output: {
-            preamble: outputCommon.banner
-          }
-        })
-      ]
-    }
-  ]
+            preamble: outputCommon.banner,
+          },
+        }),
+      ],
+    },
+  ],
 };
 
 const module = {
@@ -64,18 +64,18 @@ const module = {
       plugins: [
         terser({
           output: {
-            preamble: outputCommon.banner
-          }
-        })
-      ]
+            preamble: outputCommon.banner,
+          },
+        }),
+      ],
     },
     {
       ...outputCommon,
       dir: 'dist/debug',
       chunkFileNames: '[name]-[hash].js',
-      format: 'esm'
-    }
-  ]
+      format: 'esm',
+    },
+  ],
 };
 
 export default [umd, module];
