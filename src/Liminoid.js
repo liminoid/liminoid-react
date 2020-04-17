@@ -36,6 +36,7 @@ export default class Liminoid extends React.Component {
     initialized: false,
     showConsole: false,
     running: false,
+    id: undefined,
   };
 
   padding = 10;
@@ -91,7 +92,7 @@ export default class Liminoid extends React.Component {
       // do we need to initialize a global Repl()?
       Liminoid.#SCOPE = Liminoid.#SCOPE || new Repl();
       this.#repl = Liminoid.#SCOPE;
-      Liminoid.#shared.add(this.id);
+      Liminoid.#shared.add(this.state.id);
     }
 
     // async method, we don't want to block
@@ -116,7 +117,7 @@ export default class Liminoid extends React.Component {
     this.setState({ running: true });
     if (this.display && window) {
       this.setState({ showConsole: true });
-      stdout = document.getElementById(`console-${this.id}`);
+      stdout = document.getElementById(`console-${this.state.id}`);
       stdout.innerText = 'Running...';
     }
 
@@ -186,7 +187,7 @@ export default class Liminoid extends React.Component {
       if (!this.scope) {
         this.#broadcast('Restarting Python session...');
       } else {
-        document.getElementById(`console-${this.id}`).innerText =
+        document.getElementById(`console-${this.state.id}`).innerText =
           'Restarting Python session...';
       }
     }
@@ -201,7 +202,7 @@ export default class Liminoid extends React.Component {
             if (!this.scope) {
               this.#broadcast('Session restarted!');
             } else {
-              document.getElementById(`console-${this.id}`).innerText =
+              document.getElementById(`console-${this.state.id}`).innerText =
                 'Session restarted!';
             }
           }
@@ -218,18 +219,18 @@ export default class Liminoid extends React.Component {
     });
   }
 
-  get id() {
-    return this.#repl ? this.#repl.id : undefined;
-  }
-
   componentDidMount() {
     // needs to be in browser to attach Repl
     import('liminoid-js').then(({ Repl }) => {
       this.#initRepl(Repl);
     });
 
+    this.setState({
+      id: window.crypto.getRandomValues(new Uint32Array(1))[0].toString(16),
+    });
+
     // attach tooltip to copy  button
-    this.#tippy = tippy(document.getElementById(`copy-${this.id}`), {
+    this.#tippy = tippy(document.getElementById(`copy-${this.state.id}`), {
       content: 'Copied to clipboard!',
       trigger: 'manual',
       theme: 'translucent',
@@ -237,13 +238,13 @@ export default class Liminoid extends React.Component {
 
     if (!this.edit && window) {
       // disable the textarea of the child react-simple-code-editor
-      document.getElementById(`editor-${this.id}`).disabled = true;
+      document.getElementById(`editor-${this.state.id}`).disabled = true;
     }
   }
 
   render() {
     return (
-      <div id={`liminoid-${this.id}`} className="liminoidCode">
+      <div id={`liminoid-${this.state.id}`} className="liminoidCode">
         <div
           className="editor-btns"
           style={{
@@ -268,21 +269,21 @@ export default class Liminoid extends React.Component {
           </span>
           <div>
             <Button
-              id={`play-${this.id}`}
+              id={`play-${this.state.id}`}
               icon={faPlay}
               action={this.#run}
               disabled={!this.state.initialized || this.state.running}
               title="Run this code"
             />
             <Button
-              id={`copy-${this.id}`}
+              id={`copy-${this.state.id}`}
               icon={faCopy}
               action={this.#copy}
               disabled={false}
               title="Copy to clipboard"
             />
             <Button
-              id={`stop-${this.id}`}
+              id={`stop-${this.state.id}`}
               icon={faTimes}
               action={this.#restart}
               disabled={!this.state.initialized}
@@ -298,11 +299,11 @@ export default class Liminoid extends React.Component {
           padding={this.padding}
           style={this.#style}
           tabSize={4}
-          textareaId={`editor-${this.id}`}
+          textareaId={`editor-${this.state.id}`}
         />
         {this.display && (
           <Console
-            id={`console-${this.id}`}
+            id={`console-${this.state.id}`}
             style={{
               ...this.#style,
               ...{

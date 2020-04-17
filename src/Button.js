@@ -2,9 +2,6 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // eslint-disable-line no-unused-vars
 
 export default class Button extends React.Component {
-  #editor;
-  action;
-  icon;
   style = {
     fontFamily: 'inherit',
     margin: '0.5em',
@@ -19,18 +16,11 @@ export default class Button extends React.Component {
     padding: 0,
   };
 
-  constructor(props) {
-    super(props);
-    this.id = props.id;
-    this.action = props.action;
-    this.icon = props.icon;
-  }
-
   render() {
     return (
       <button
-        onClick={this.action}
-        id={this.id}
+        onClick={this.props.action}
+        id={this.props.id}
         className="liminoid"
         disabled={this.props.disabled}
         style={{
@@ -39,7 +29,7 @@ export default class Button extends React.Component {
         }}
         title={this.props.title}
       >
-        <FontAwesomeIcon icon={this.icon} inverse />
+        <FontAwesomeIcon icon={this.props.icon} inverse />
       </button>
     );
   }
