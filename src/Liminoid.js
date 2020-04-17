@@ -19,11 +19,9 @@ import Console from './Console'; // eslint-disable-line no-unused-vars
 
 export default class Liminoid extends React.Component {
   static #SCOPE;
-  static #count = 0;
   static #shared = new Set();
 
   // private instance fields
-  #id;
   #tippy;
   #repl;
   #style = {
@@ -49,10 +47,6 @@ export default class Liminoid extends React.Component {
 
   constructor(props) {
     super(props);
-
-    // update class state shared between editors
-    Liminoid.#count += 1;
-    this.#id = Liminoid.#count;
 
     // set initial default code if component has no code
     if (props.code && typeof props.code === 'string') {
@@ -97,7 +91,7 @@ export default class Liminoid extends React.Component {
       // do we need to initialize a global Repl()?
       Liminoid.#SCOPE = Liminoid.#SCOPE || new Repl();
       this.#repl = Liminoid.#SCOPE;
-      Liminoid.#shared.add(this.#id);
+      Liminoid.#shared.add(this.id);
     }
 
     // async method, we don't want to block
@@ -122,7 +116,7 @@ export default class Liminoid extends React.Component {
     this.setState({ running: true });
     if (this.display && window) {
       this.setState({ showConsole: true });
-      stdout = document.getElementById(`console-${this.#id}`);
+      stdout = document.getElementById(`console-${this.id}`);
       stdout.innerText = 'Running...';
     }
 
@@ -192,7 +186,7 @@ export default class Liminoid extends React.Component {
       if (!this.scope) {
         this.#broadcast('Restarting Python session...');
       } else {
-        document.getElementById(`console-${this.#id}`).innerText =
+        document.getElementById(`console-${this.id}`).innerText =
           'Restarting Python session...';
       }
     }
@@ -207,7 +201,7 @@ export default class Liminoid extends React.Component {
             if (!this.scope) {
               this.#broadcast('Session restarted!');
             } else {
-              document.getElementById(`console-${this.#id}`).innerText =
+              document.getElementById(`console-${this.id}`).innerText =
                 'Session restarted!';
             }
           }
@@ -224,6 +218,10 @@ export default class Liminoid extends React.Component {
     });
   }
 
+  get id() {
+    return this.#repl ? this.#repl.id : undefined;
+  }
+
   componentDidMount() {
     // needs to be in browser to attach Repl
     import('liminoid-js').then(({ Repl }) => {
@@ -231,7 +229,7 @@ export default class Liminoid extends React.Component {
     });
 
     // attach tooltip to copy  button
-    this.#tippy = tippy(document.getElementById(`copy-${this.#id}`), {
+    this.#tippy = tippy(document.getElementById(`copy-${this.id}`), {
       content: 'Copied to clipboard!',
       trigger: 'manual',
       theme: 'translucent',
@@ -239,13 +237,13 @@ export default class Liminoid extends React.Component {
 
     if (!this.edit && window) {
       // disable the textarea of the child react-simple-code-editor
-      document.getElementById(`editor-${this.#id}`).disabled = true;
+      document.getElementById(`editor-${this.id}`).disabled = true;
     }
   }
 
   render() {
     return (
-      <div id={`liminoid-${this.#id}`} className="liminoidCode">
+      <div id={`liminoid-${this.id}`} className="liminoidCode">
         <div
           className="editor-btns"
           style={{
@@ -270,21 +268,21 @@ export default class Liminoid extends React.Component {
           </span>
           <div>
             <Button
-              id={`play-${this.#id}`}
+              id={`play-${this.id}`}
               icon={faPlay}
               action={this.#run}
               disabled={!this.state.initialized || this.state.running}
               title="Run this code"
             />
             <Button
-              id={`copy-${this.#id}`}
+              id={`copy-${this.id}`}
               icon={faCopy}
               action={this.#copy}
               disabled={false}
               title="Copy to clipboard"
             />
             <Button
-              id={`stop-${this.#id}`}
+              id={`stop-${this.id}`}
               icon={faTimes}
               action={this.#restart}
               disabled={!this.state.initialized}
@@ -300,11 +298,11 @@ export default class Liminoid extends React.Component {
           padding={this.padding}
           style={this.#style}
           tabSize={4}
-          textareaId={`editor-${this.#id}`}
+          textareaId={`editor-${this.id}`}
         />
         {this.display && (
           <Console
-            id={`console-${this.#id}`}
+            id={`console-${this.id}`}
             style={{
               ...this.#style,
               ...{
