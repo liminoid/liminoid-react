@@ -14,6 +14,7 @@ export default class Button extends React.Component {
     backgroundRepeat: 'no-repeat',
     border: 'none',
     padding: 0,
+    display: 'inline',
   };
 
   render() {
