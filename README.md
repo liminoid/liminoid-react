@@ -50,9 +50,7 @@ For a more comprehensive guide to using the package see the [documentation](http
 ```jsx
 // easiest to use ES6 imports from the UNPKG CDN
 import Liminoid from 'https://cdn.liminoid.io/liminoid-react/index.js';
-
-//import { Repl } from 'https://cdn.liminoid.io/liminoid-js/index.js';
-// import { Repl } from https://cdn.liminoid.io/liminoid-js@x.x.x/index.js
+// import Liminoid from 'https://cdn.liminoid.io/liminoid-react@x.x.x/index.js';
 
 const placeholder = `
 from sklearn import svm
